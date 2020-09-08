@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Friend list</title>
+</head>
+	
+<body>
+		<ul th:each="friend: ${Friends}">
+			<li th:text="${friend.firstName} + ' ' + ${friend.lastName}" />
+		</ul>
+
+	<form action="#" th:action="@{/index}" th:object="${friend}" method="post">
+		<p>First name: <input type="text" th:field="*{firstName}"></p>
+		<p>Last name: <input type="text" th:field="*{lastName}"></p>
+		<p><input type="submit" value="Submit" /></p>
+	</form>
+</body>
+</html>

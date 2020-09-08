@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Handle list</title>
+</head>
+
+<body>
+
+	<ul th:each="friend: ${Friends}">
+		<li th:text="${friend.name}" />	
+	</ul>
+
+
+	<form action="#" th:action="@{/index}" th:object="${friend}" method="post">
+	
+		<p>name: <input type="text" th:field="*{name}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+	
+	</form>
+	
+	
+</body>
+</html>
