@@ -8,8 +8,12 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface BookRepository extends CrudRepository <Book, Long>{
+	//get books by title
 	List<Book> findByTitle(@Param("title") String title);
 	
-	//get cars by year
+	//get books by year
 	List<Book> findByYear(@Param("year") String year);
+	
+	//get books by author
+	List<Book> findByAuthor(@Param("author") String author);
 }
