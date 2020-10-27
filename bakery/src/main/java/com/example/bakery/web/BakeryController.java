@@ -6,14 +6,17 @@ import com.example.bakery.domain.TypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.List;
 
 @Controller
+
+// The @RestController annotation identifies that this class will be the controller for the RESTful web service:
+//Using @RestController /breadlist endpoint can't return HTML page anymore
+//While you can also create RESTful service by using @Controller and @ResponseBody annotations, /breadlist and others endpoints can return HTML pages
+//At the same time, /breads endpoint can return breads in JSON
 public class BakeryController {
     @Autowired
     private BreadRepository breadRepository;
@@ -54,5 +57,17 @@ public class BakeryController {
         model.addAttribute("bread", breadRepository.findById(id));
         model.addAttribute("types", typeRepository.findAll());
         return "editbread";
+    }
+
+    // Restful service to get all cars
+    @GetMapping(value = "/breads")
+    public @ResponseBody Iterable<Bread> getBreads(){
+        return breadRepository.findAll();
+    }
+
+    //Restful service to find bread by id using path variable
+    @GetMapping(value = "/bread/{id}")
+    public @ResponseBody Bread findByIdRest(@PathVariable("id") Long breadId){
+        return breadRepository.findAllById(breadId);
     }
 }
