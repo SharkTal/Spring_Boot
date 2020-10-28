@@ -62,6 +62,7 @@ public class BakeryController {
     // Restful service to get all cars
     @GetMapping(value = "/breads")
     public @ResponseBody Iterable<Bread> getBreads(){
+
         return breadRepository.findAll();
     }
 
@@ -70,4 +71,28 @@ public class BakeryController {
     public @ResponseBody Bread findByIdRest(@PathVariable("id") Long breadId){
         return breadRepository.findAllById(breadId);
     }
+
+    //Security
+    //Login
+    @PostMapping(value = "/login")
+    public String login(){
+        return "login";
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
