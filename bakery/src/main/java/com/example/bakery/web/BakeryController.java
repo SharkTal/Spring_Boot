@@ -73,11 +73,8 @@ public class BakeryController {
     }
 
     //Security
-    //Login
-    @PostMapping(value = "/login")
-    public String login(){
-        return "login";
-    }
+
+
 }
 
 
