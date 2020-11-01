@@ -1,9 +1,6 @@
 package com.example.bakery;
 
-import com.example.bakery.domain.Bread;
-import com.example.bakery.domain.BreadRepository;
-import com.example.bakery.domain.Type;
-import com.example.bakery.domain.TypeRepository;
+import com.example.bakery.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,6 +14,10 @@ public class BakeryApplication {
 
 	@Autowired
 	private TypeRepository typeRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(BakeryApplication.class, args);
@@ -46,6 +47,13 @@ public class BakeryApplication {
 		//save demo data to database h2
 			//breadRepository.save(new Bread("ruismies","Fazer",1.2, 5));
 			//breadRepository.save(new Bread("Kauratyynyt", "Vaasan", 1.39, 4));
+
+
+			//username: user password: user
+			userRepository.save(new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER"));
+			//username:adimin, password:admin
+			userRepository.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG","ADMIN"));
+
 		};
 	}
 }
