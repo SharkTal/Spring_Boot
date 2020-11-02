@@ -54,6 +54,7 @@ public class BakeryApplication {
 			//username:adimin, password:admin
 			userRepository.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG","ADMIN"));
 
+
 		};
 	}
 }

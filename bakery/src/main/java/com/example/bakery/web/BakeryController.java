@@ -4,6 +4,7 @@ import com.example.bakery.domain.Bread;
 import com.example.bakery.domain.BreadRepository;
 import com.example.bakery.domain.TypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,7 @@ public class BakeryController {
     }
 
     //Delete function
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/delete/{id}")
     public String deleteBread(@PathVariable("id") Long breadId, Model model){
         breadRepository.deleteById(breadId);
